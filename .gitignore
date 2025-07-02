@@ -1,0 +1,10 @@
+/target/
+.project
+target/**
+.git/**
+.settings/**
+.classpath
+.factorypath
+src-gen
+bin
+src/test/resources/uvl2kc/*.Kconfig
