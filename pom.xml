@@ -24,12 +24,6 @@
 	</properties>
 
 	<dependencies>
-		<!-- Required by the Kfeature parser -->
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr</artifactId>
-			<version>3.5.3</version>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>

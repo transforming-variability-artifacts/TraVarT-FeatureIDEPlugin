@@ -15,15 +15,23 @@
 package de.kit.kastel.travart.fide.transformation;
 
 import at.jku.cps.travart.core.transformation.*;
+
+import org.apache.logging.log4j.core.appender.rolling.FileExtension;
+
 import at.jku.cps.travart.core.common.IStatistics;
 import at.jku.cps.travart.core.exception.NotSupportedVariabilityTypeException;
 import at.jku.cps.travart.core.io.UVLSerializer;
 import de.kit.kastel.travart.fide.FeatureIdeStatistics;
 import de.kit.kastel.travart.fide.factory.impl.FeatureIdeFactory;
+import de.ovgu.featureide.fm.core.ExtensionManager;
+import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
+import de.ovgu.featureide.fm.core.base.impl.MultiFeatureModel;
+import de.ovgu.featureide.fm.core.base.impl.MultiFeatureModelFactory;
 import de.ovgu.featureide.fm.core.io.manager.FileHandler;
 import de.ovgu.featureide.fm.core.io.uvl.UVLFeatureModelFormat;
 import de.vill.main.UVLModelFactory;
+import de.ovgu.featureide.fm.core.base.impl.MultiFeatureModelFactory;
 
 public class FeatureIdeModelTransformer extends AbstractBenchmarkingTransformer<FeatureModel> {
 
@@ -32,7 +40,8 @@ public class FeatureIdeModelTransformer extends AbstractBenchmarkingTransformer<
 	public FeatureModel transformInner(final de.vill.model.FeatureModel model, final String modelName, final STRATEGY strategy)
 			throws NotSupportedVariabilityTypeException {
 		var uvlSerializer = new UVLSerializer();
-		var result = FeatureIdeFactory.getInstance().create();
+		var result = MultiFeatureModelFactory.getInstance().create();
+		FMFactoryManager.getInstance().addExtension(MultiFeatureModelFactory.getInstance());
 		// "Transform" models by serializing and deserializing successively
 		FileHandler.loadFromString(uvlSerializer.serialize(model), result, new UVLFeatureModelFormat());
 		return result;

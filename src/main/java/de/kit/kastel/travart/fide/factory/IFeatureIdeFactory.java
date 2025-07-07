@@ -17,6 +17,7 @@ package de.kit.kastel.travart.fide.factory;
 import at.jku.cps.travart.core.common.IFactory;
 
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
+import de.ovgu.featureide.fm.core.base.impl.MultiFeatureModel;
 
 public interface IFeatureIdeFactory extends IFactory<FeatureModel> {
 
