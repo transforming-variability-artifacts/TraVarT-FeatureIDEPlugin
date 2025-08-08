@@ -1,6 +1,6 @@
 package de.kit.kastel.travart.fide;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
 
 import at.jku.cps.travart.core.common.IStatistics;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;

@@ -15,6 +15,8 @@
 package de.kit.kastel.travart.fide.factory.impl;
 
 import de.kit.kastel.travart.fide.factory.IFeatureIdeFactory;
+import de.ovgu.featureide.fm.core.base.IFactory;
+import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 
 public class FeatureIdeFactory implements IFeatureIdeFactory {
@@ -41,5 +43,11 @@ public class FeatureIdeFactory implements IFeatureIdeFactory {
 	@Override
 	public FeatureModel create() {
 		return new FeatureModel(ID);
+	}
+
+	@Override
+	public boolean initExtension() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

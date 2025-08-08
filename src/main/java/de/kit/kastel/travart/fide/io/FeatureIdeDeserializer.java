@@ -1,5 +1,5 @@
 /*******************************************************************************
- * This Source Code Form is subject to the terms of the Mozilla
+ * This Source Code Form is subject to the terms of the Mozilla,
  * Public License, v. 2.0. If a copy of the MPL was not distributed
  * with this file, You can obtain one at
  * https://mozilla.org/MPL/2.0/.
@@ -20,6 +20,7 @@ import at.jku.cps.travart.core.common.Format;
 import at.jku.cps.travart.core.common.IDeserializer;
 import at.jku.cps.travart.core.exception.NotSupportedVariabilityTypeException;
 import de.kit.kastel.travart.fide.factory.impl.FeatureIdeFactory;
+import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 import de.ovgu.featureide.fm.core.io.manager.FileHandler;
 import de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat;
@@ -29,6 +30,8 @@ public class FeatureIdeDeserializer implements IDeserializer<FeatureModel> {
 	@Override
 	public FeatureModel deserialize(String serial, Format format) throws NotSupportedVariabilityTypeException {
 		FeatureModel deserializedModel = FeatureIdeFactory.getInstance().create();
+		// FIXME This unfortunately does not fix the issue with the NoSuchExtensionException
+		FMFactoryManager.getInstance().addExtension(FeatureIdeFactory.getInstance());
 		FileHandler.loadFromString(serial, deserializedModel, new XmlFeatureModelFormat());
 		return deserializedModel;
 	}
